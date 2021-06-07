@@ -5,8 +5,12 @@ Html:
 oi
 <button (click)="add()">Adicionar pelo pai</button>
 
+<div *ngFor="let item of lista">
+  {{item}}
+</div>
+
 <app-filho [listaFilho]="lista"></app-filho>
-<app-filho [listaFilho]="lista"></app-filho
+<app-filho [listaFilho]="lista"></app-filho>
 ```
 
 Typescript
