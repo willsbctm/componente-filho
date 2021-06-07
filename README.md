@@ -1,27 +1,57 @@
-# TesteFilho
+# Pai
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
+Html:
+```
+oi
+<button (click)="add()">Adicionar pelo pai</button>
 
-## Development server
+<app-filho [listaFilho]="lista"></app-filho>
+<app-filho [listaFilho]="lista"></app-filho
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Typescript
+```
+export class AppComponent implements OnInit {
+  lista: String[]
 
-## Code scaffolding
+  ngOnInit(): void {
+    this.lista = []
+    this.add()
+  }
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  add(): void {
+    this.lista.push(`Item ${ this.lista.length }`)
+  }
 
-## Build
+  title = 'teste-filho';
+}
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+# Filho
 
-## Running unit tests
+Html:
+```
+<p>app-filho works!</p>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<button (click)="add()">Adicionar pelo filho</button>
 
-## Running end-to-end tests
+<div *ngFor="let item of listaFilho">
+  {{item}}
+</div>
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Typescript
+```
+export class AppFilhoComponent implements OnInit {
+  @Input() listaFilho: String[]
+  constructor() { }
 
-## Further help
+  ngOnInit(): void {
+  }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  add(): void {
+    this.listaFilho.push(`Item ${ this.listaFilho.length }`)
+  }
+}
+```
+
